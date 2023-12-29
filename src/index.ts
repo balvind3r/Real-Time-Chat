@@ -21,7 +21,7 @@ server.listen(8080, function() {
 
 const wsServer = new WebSocketServer({
     httpServer: server,
-    autoAcceptConnections: false
+    autoAcceptConnections: true
 });
 
 function originIsAllowed(origin: string) {
@@ -106,7 +106,7 @@ function messageHandler(ws: connection, message : IncomingMessage){
                 upvotes: chat.upvotes.length
             }
         }
-        
+
         userManager.broadcast(payload.roomId, payload.userId, OutgoingPayload);
     }
 
